@@ -18,6 +18,25 @@ Abre `http://localhost:3000`.
 - `npm run start` — servir build de Next.
 - `npm run test` — tests con Vitest.
 
+## Deploy en GitHub Pages (rama `main`)
+
+El repositorio ya queda listo para deploy automático al hacer push a `main`.
+
+1. En GitHub → **Settings → Pages**, seleccionar **GitHub Actions** como source.
+2. Hacer push a `main`.
+3. El workflow `.github/workflows/deploy-pages.yml` hace:
+   - `npm ci`
+   - `npm run test`
+   - `npm run build`
+   - publica la carpeta `out/` en Pages.
+
+### Notas técnicas de Pages
+
+- `next.config.mjs` usa `output: 'export'`.
+- Se habilita `trailingSlash: true` + `images.unoptimized: true`.
+- En GitHub Actions se calcula `basePath` y `assetPrefix` desde `GITHUB_REPOSITORY` para que funcione bajo `/<repo>`.
+- Se crea `out/.nojekyll` para evitar conflictos con Jekyll.
+
 ## Estructura
 
 - `app/page.tsx`: entrada principal de la landing.
@@ -55,4 +74,4 @@ Abre `http://localhost:3000`.
 
 ## Versión
 
-- Footer de la app: `abeejaa v1.0.0`.
+- App + footer: `abeejaa v1.1.0`.
