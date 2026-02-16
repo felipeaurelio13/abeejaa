@@ -85,7 +85,7 @@ export default function ScrollyStory() {
           </ul>
         </section>
 
-        <p className="text-xs text-white/60">abeejaa v1.0.0 · Diseñado mobile-first, sin scrolljacking.</p>
+        <p className="text-xs text-white/60">abeejaa v1.1.0 · Diseñado mobile-first, sin scrolljacking.</p>
       </footer>
     </main>
   );
