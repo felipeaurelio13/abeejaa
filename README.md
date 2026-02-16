@@ -66,6 +66,13 @@ El repositorio ya queda listo para deploy automático al hacer push a `main`.
 - Toggle manual `Reducir movimiento` persistido en `localStorage` (`abeejaa-reduced-motion`).
 - Con movimiento reducido se eliminan animaciones continuas y se mantiene lectura visual estática.
 
+
+## Actualización visual v1.2.0
+
+- Se profesionalizó el lenguaje gráfico con una misma base visual por escena (marco, gradientes y jerarquía), reduciendo ruido decorativo y enfocando cada animación en el concepto didáctico principal.
+- Las animaciones ahora son más sutiles, con menor desplazamiento y escalado leve para reforzar lectura, no distraer.
+- Se mantiene compatibilidad con `prefers-reduced-motion` y toggle manual.
+
 ## Performance
 
 - Animaciones basadas principalmente en `transform` + `opacity`.
@@ -74,4 +81,4 @@ El repositorio ya queda listo para deploy automático al hacer push a `main`.
 
 ## Versión
 
-- App + footer: `abeejaa v1.1.0`.
+- App + footer: `abeejaa v1.2.0`.
