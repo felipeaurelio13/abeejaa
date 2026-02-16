@@ -1,62 +1,200 @@
 'use client';
 
+import React from 'react';
+
 type Props = {
   index: number;
   reducedMotion: boolean;
 };
 
-function HexGrid({ glow = false }: { glow?: boolean }) {
+const motionClass = (reducedMotion: boolean) => (reducedMotion ? '' : 'animate-[pulse_4s_ease-in-out_infinite]');
+
+function BackgroundFrame() {
   return (
-    <g className={glow ? 'opacity-90' : 'opacity-50'}>
+    <>
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#0f172a" />
+          <stop offset="100%" stopColor="#111827" />
+        </linearGradient>
+        <linearGradient id="amberFlow" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#fde68a" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="600" height="400" rx="24" fill="url(#bg)" />
+      <rect x="16" y="16" width="568" height="368" rx="18" fill="none" stroke="rgba(255,255,255,.12)" />
+    </>
+  );
+}
+
+function HexPattern({ opacity = 0.25 }: { opacity?: number }) {
+  return (
+    <g opacity={opacity}>
       {Array.from({ length: 18 }).map((_, i) => {
         const row = Math.floor(i / 6);
         const col = i % 6;
-        const x = 80 + col * 84 + (row % 2) * 42;
-        const y = 80 + row * 72;
-        return <polygon key={i} points={`${x},${y} ${x + 30},${y + 17} ${x + 30},${y + 51} ${x},${y + 68} ${x - 30},${y + 51} ${x - 30},${y + 17}`} className="fill-amber-200/30 stroke-amber-300/70" strokeWidth="2" />;
+        const x = 70 + col * 84 + (row % 2) * 42;
+        const y = 72 + row * 70;
+        return (
+          <polygon
+            key={i}
+            points={`${x},${y} ${x + 28},${y + 16} ${x + 28},${y + 48} ${x},${y + 64} ${x - 28},${y + 48} ${x - 28},${y + 16}`}
+            fill="rgba(251, 191, 36, 0.16)"
+            stroke="rgba(253, 224, 71, 0.45)"
+            strokeWidth="1.5"
+          />
+        );
       })}
     </g>
   );
 }
 
 export default function SceneVisual({ index, reducedMotion }: Props) {
-  const pulseClass = reducedMotion ? '' : 'animate-[pulse_3s_ease-in-out_infinite]';
+  const pulse = motionClass(reducedMotion);
 
   if (index === 0) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full anim"><circle cx="120" cy="200" r="40" className="fill-amber-400" /><circle cx="300" cy="120" r="20" className={`fill-amber-500 anim ${pulseClass}`} /><circle cx="360" cy="220" r="20" className="fill-amber-500" /><circle cx="460" cy="170" r="22" className="fill-amber-500" /><path d="M160 200 C 230 170, 250 140, 280 130 M160 200 C 240 220, 300 220, 340 220 M160 200 C 290 190, 380 180, 438 170" className="stroke-amber-300 stroke-[3] fill-none anim" /><text x="80" y="265" className="fill-white text-2xl">solitaria</text><text x="418" y="112" className="fill-white text-2xl">colonia</text></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <circle cx="125" cy="210" r="46" fill="#fbbf24" className="anim" />
+        <g className="anim">
+          <circle cx="305" cy="130" r="20" fill="#f59e0b" className={pulse} />
+          <circle cx="370" cy="220" r="22" fill="#f59e0b" />
+          <circle cx="468" cy="170" r="24" fill="#f59e0b" />
+        </g>
+        <path d="M170 204 C 228 172, 258 147, 286 133 M170 204 C 244 214, 306 221, 350 220 M170 204 C 286 198, 380 184, 442 171" stroke="url(#amberFlow)" strokeWidth="4" fill="none" className="anim" />
+        <text x="74" y="278" fill="rgba(255,255,255,.9)" fontSize="24">nido solitario</text>
+        <text x="388" y="112" fill="rgba(255,255,255,.9)" fontSize="24">colonia</text>
+      </svg>
+    );
   }
 
   if (index === 1) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><HexGrid glow /><circle cx="70" cy="100" r="16" className="fill-sky-300 anim" /><circle cx="70" cy="180" r="16" className="fill-orange-400 anim" /><circle cx="70" cy="260" r="16" className="fill-teal-300 anim" /><path d="M88 100 H210 M88 180 H220 M88 260 H230" className="stroke-white/80 stroke-2 anim" /><rect x="420" y="90" width="95" height="200" rx="10" className="fill-emerald-400/30 stroke-emerald-300" /><rect x="420" y="210" width="95" height="80" className="fill-emerald-300/70 anim" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <HexPattern />
+        <g className="anim">
+          <rect x="420" y="86" width="110" height="220" rx="14" fill="rgba(52, 211, 153, 0.2)" stroke="rgba(110, 231, 183, .6)" />
+          <rect x="420" y="198" width="110" height="108" rx="8" fill="rgba(52, 211, 153, 0.55)" />
+        </g>
+        <g className="anim">
+          <circle cx="88" cy="112" r="14" fill="#7dd3fc" />
+          <circle cx="88" cy="190" r="14" fill="#fb923c" />
+          <circle cx="88" cy="268" r="14" fill="#5eead4" />
+          <path d="M108 112 H220 M108 190 H235 M108 268 H250" stroke="rgba(255,255,255,.75)" strokeWidth="3" />
+        </g>
+      </svg>
+    );
   }
 
   if (index === 2) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><ellipse cx="130" cy="200" rx="55" ry="95" className="fill-yellow-300" /><ellipse cx="300" cy="210" rx="48" ry="75" className="fill-amber-300" /><ellipse cx="470" cy="200" rx="70" ry="60" className="fill-yellow-200" /><circle cx="470" cy="165" r="22" className="fill-slate-900/70 anim" /><line x1="292" y1="280" x2="330" y2="320" className="stroke-red-400 stroke-4 anim" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <ellipse cx="130" cy="210" rx="56" ry="95" fill="#fde047" className="anim" />
+        <ellipse cx="300" cy="212" rx="50" ry="76" fill="#fcd34d" className="anim" />
+        <ellipse cx="470" cy="210" rx="72" ry="62" fill="#fef08a" className="anim" />
+        <circle cx="468" cy="172" r="24" fill="rgba(15,23,42,.6)" />
+        <line x1="292" y1="282" x2="332" y2="324" stroke="#f87171" strokeWidth="5" className="anim" />
+      </svg>
+    );
   }
 
   if (index === 3) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><circle cx="300" cy="90" r="34" className="fill-amber-100 anim" /><path d="M300 124 V330" className="stroke-white stroke-2" /><path d="M300 160 C220 200,220 270,220 320" className="stroke-fuchsia-300 stroke-[5] fill-none anim" /><path d="M300 160 C380 200,380 270,380 320" className="stroke-sky-300 stroke-[5] fill-none anim" /><text x="155" y="346" className="fill-fuchsia-200">fecundado</text><text x="360" y="346" className="fill-sky-200">no fecundado</text></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <circle cx="300" cy="88" r="30" fill="rgba(254,243,199,.95)" className="anim" />
+        <path d="M300 118 V330" stroke="rgba(255,255,255,.7)" strokeWidth="2" />
+        <path d="M300 160 C220 200,220 268,220 322" stroke="#f0abfc" strokeWidth="6" fill="none" className="anim" />
+        <path d="M300 160 C380 200,380 268,380 322" stroke="#7dd3fc" strokeWidth="6" fill="none" className="anim" />
+        <text x="152" y="352" fill="rgba(250,232,255,.95)" fontSize="22">huevo fecundado</text>
+        <text x="342" y="352" fill="rgba(224,242,254,.95)" fontSize="22">no fecundado</text>
+      </svg>
+    );
   }
 
   if (index === 4) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><circle cx="120" cy="200" r="50" className="fill-white/50 anim" /><circle cx="250" cy="200" r="58" className="fill-lime-200/50 anim" /><circle cx="390" cy="200" r="66" className="fill-violet-200/50 anim" /><circle cx="530" cy="200" r="74" className="fill-amber-300/60 anim" /><path d="M170 200 H192 M308 200 H325 M455 200 H470" className="stroke-white stroke-4" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <g className="anim">
+          <circle cx="116" cy="204" r="46" fill="rgba(255,255,255,.45)" />
+          <circle cx="248" cy="204" r="56" fill="rgba(217,249,157,.48)" />
+          <circle cx="388" cy="204" r="66" fill="rgba(221,214,254,.48)" />
+          <circle cx="528" cy="204" r="76" fill="rgba(252,211,77,.58)" />
+        </g>
+        <path d="M164 204 H192 M304 204 H322 M454 204 H470" stroke="rgba(255,255,255,.8)" strokeWidth="4" />
+      </svg>
+    );
   }
 
   if (index === 5) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><path d="M70 300 H530" className="stroke-white/60 stroke-4" /><circle cx="90" cy="300" r="18" className="fill-amber-400 anim" /><rect x="140" y="250" width="70" height="50" className="fill-cyan-300/60" /><rect x="240" y="230" width="70" height="70" className="fill-amber-200/60" /><rect x="340" y="210" width="70" height="90" className="fill-red-300/60" /><rect x="440" y="190" width="70" height="110" className="fill-emerald-300/60" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <path d="M70 306 H530" stroke="rgba(255,255,255,.48)" strokeWidth="4" />
+        <circle cx="92" cy="306" r="18" fill="#f59e0b" className="anim" />
+        <rect x="144" y="256" width="72" height="50" rx="6" fill="rgba(56, 189, 248, .58)" className="anim" />
+        <rect x="246" y="236" width="72" height="70" rx="6" fill="rgba(253, 230, 138, .62)" className="anim" />
+        <rect x="348" y="216" width="72" height="90" rx="6" fill="rgba(252, 165, 165, .64)" className="anim" />
+        <rect x="450" y="196" width="72" height="110" rx="6" fill="rgba(110, 231, 183, .6)" className="anim" />
+      </svg>
+    );
   }
 
   if (index === 6) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><circle cx="300" cy="200" r="100" className="fill-fuchsia-300/20 stroke-fuchsia-200" /><path d="M190 220 C250 170, 340 160, 410 110" className="stroke-amber-300 stroke-[6] fill-none anim" /><path d="M300 200 L420 150" className="stroke-cyan-300 stroke-2" /><circle cx="420" cy="150" r="11" className="fill-cyan-200" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <circle cx="300" cy="200" r="102" fill="rgba(244,114,182,.17)" stroke="rgba(251,207,232,.8)" />
+        <path d="M192 220 C250 172, 340 162, 410 112" stroke="url(#amberFlow)" strokeWidth="7" fill="none" className="anim" />
+        <path d="M300 200 L420 150" stroke="rgba(125, 211, 252, .9)" strokeWidth="2" className="anim" />
+        <circle cx="420" cy="150" r="11" fill="rgba(186,230,253,.95)" className={pulse} />
+      </svg>
+    );
   }
 
   if (index === 7) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><rect x="250" y="90" width="100" height="220" rx="20" className="fill-white/20" /><rect x="260" y="130" width="80" height="170" rx="12" className="fill-gradient-to-b from-sky-300 to-red-400" /><circle cx="150" cy="130" r="35" className="fill-sky-300/40 anim" /><circle cx="450" cy="280" r="45" className="fill-orange-300/40 anim" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <rect x="248" y="88" width="104" height="224" rx="20" fill="rgba(255,255,255,.17)" />
+        <rect x="260" y="126" width="80" height="174" rx="12" fill="url(#amberFlow)" className="anim" />
+        <circle cx="152" cy="130" r="36" fill="rgba(125, 211, 252, .38)" className="anim" />
+        <circle cx="448" cy="280" r="46" fill="rgba(251, 146, 60, .36)" className="anim" />
+      </svg>
+    );
   }
 
   if (index === 8) {
-    return <svg viewBox="0 0 600 400" className="h-full w-full"><path d="M70 90 H530" className="stroke-white/30 stroke-2" /><circle cx="90" cy="90" r="16" className="fill-red-300" /><circle cx="180" cy="90" r="16" className="fill-fuchsia-300" /><circle cx="280" cy="90" r="16" className="fill-violet-300" /><circle cx="390" cy="90" r="16" className="fill-emerald-300" /><circle cx="500" cy="90" r="16" className="fill-amber-300" /><path d="M90 90 V250 H500" className="stroke-white/50 stroke-3 fill-none" /><path d="M280 250 V320 H520" className="stroke-red-300 stroke-[5] fill-none anim" /></svg>;
+    return (
+      <svg viewBox="0 0 600 400" className="h-full w-full">
+        <BackgroundFrame />
+        <path d="M70 90 H530" stroke="rgba(255,255,255,.3)" strokeWidth="2" />
+        <g className="anim">
+          <circle cx="90" cy="90" r="16" fill="#fca5a5" />
+          <circle cx="180" cy="90" r="16" fill="#f0abfc" />
+          <circle cx="280" cy="90" r="16" fill="#c4b5fd" />
+          <circle cx="390" cy="90" r="16" fill="#86efac" />
+          <circle cx="500" cy="90" r="16" fill="#fcd34d" />
+        </g>
+        <path d="M90 90 V250 H500" stroke="rgba(255,255,255,.52)" strokeWidth="3" fill="none" />
+        <path d="M280 250 V320 H520" stroke="#fda4af" strokeWidth="5" fill="none" className="anim" />
+      </svg>
+    );
   }
 
-  return <svg viewBox="0 0 600 400" className="h-full w-full"><HexGrid /><rect x="120" y="140" width="100" height="140" className="fill-amber-300/60 anim" /><rect x="250" y="110" width="100" height="170" className="fill-orange-300/60 anim" /><rect x="380" y="160" width="100" height="120" className="fill-emerald-300/60 anim" /><path d="M100 300 H500" className="stroke-white/50 stroke-2" /></svg>;
+  return (
+    <svg viewBox="0 0 600 400" className="h-full w-full">
+      <BackgroundFrame />
+      <HexPattern opacity={0.36} />
+      <rect x="122" y="142" width="100" height="140" rx="8" fill="rgba(252, 211, 77, .58)" className="anim" />
+      <rect x="252" y="112" width="100" height="170" rx="8" fill="rgba(251, 146, 60, .56)" className="anim" />
+      <rect x="382" y="162" width="100" height="120" rx="8" fill="rgba(110, 231, 183, .5)" className="anim" />
+      <path d="M100 304 H500" stroke="rgba(255,255,255,.48)" strokeWidth="2" />
+    </svg>
+  );
 }
