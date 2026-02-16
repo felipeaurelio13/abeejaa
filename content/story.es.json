@@ -1,0 +1,74 @@
+{
+  "scenes": [
+    {
+      "id": "scene-01",
+      "title": "De solitaria a social",
+      "caption": "Las conexiones crecieron hasta volver a la colonia una ventaja evolutiva.",
+      "callouts": ["Nido individual", "Cooperación", "Cuidado colectivo"],
+      "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
+    },
+    {
+      "id": "scene-02",
+      "title": "La colonia como superorganismo",
+      "caption": "Néctar, polen y agua sostienen cría, reservas y trabajo coordinado.",
+      "callouts": ["Entradas", "Cría", "Reservas", "Población"],
+      "sources": ["usda-bee-nutrition", "britannica-honeybee"]
+    },
+    {
+      "id": "scene-03",
+      "title": "Castas",
+      "caption": "Reina, obreras y zánganos: cuerpos distintos para tareas distintas.",
+      "callouts": ["Reina", "Obrera", "Zángano"],
+      "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
+    },
+    {
+      "id": "scene-04",
+      "title": "Genética: haplodiploidía",
+      "caption": "Un huevo fecundado y otro no fecundado siguen rutas biológicas diferentes.",
+      "callouts": ["Fecundado", "No fecundado", "Diploide", "Haploide"],
+      "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
+    },
+    {
+      "id": "scene-05",
+      "title": "Ciclo de vida",
+      "caption": "Cada etapa transforma el cuerpo y la función dentro de la colmena.",
+      "callouts": ["Huevo", "Larva", "Pupa", "Adulto"],
+      "sources": ["britannica-honeybee"]
+    },
+    {
+      "id": "scene-06",
+      "title": "División del trabajo",
+      "caption": "La obrera cambia de rol con la edad y la necesidad de la colonia.",
+      "callouts": ["Limpieza", "Nodriza", "Cera", "Guardia", "Forrajeo"],
+      "sources": ["msu-extension-honey-bee-biology", "britannica-honeybee"]
+    },
+    {
+      "id": "scene-07",
+      "title": "Comunicación",
+      "caption": "Feromonas y baile transmiten dirección, distancia y estado de la colonia.",
+      "callouts": ["Feromonas", "Waggle dance", "Vector"],
+      "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
+    },
+    {
+      "id": "scene-08",
+      "title": "Termorregulación",
+      "caption": "Ventilan, evaporan agua o se agrupan para sostener condiciones internas.",
+      "callouts": ["Enfriar", "Calentar", "Objetivo térmico"],
+      "sources": ["usda-bee-nutrition", "msu-extension-honey-bee-biology"]
+    },
+    {
+      "id": "scene-09",
+      "title": "Reina: reemplazo y crisis",
+      "caption": "Si falla la reina, la colonia abre una ventana breve para recuperarse.",
+      "callouts": ["Celdas reales", "Reina virgen", "Vuelo", "Riesgo sin larvas"],
+      "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
+    },
+    {
+      "id": "scene-10",
+      "title": "Ingeniería de reservas",
+      "caption": "Miel, bee bread y propóleo convierten recursos en estabilidad.",
+      "callouts": ["Miel", "Bee bread", "Propóleo", "Sellado"],
+      "sources": ["usda-bee-nutrition", "britannica-honeybee"]
+    }
+  ]
+}
