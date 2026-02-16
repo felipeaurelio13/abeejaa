@@ -1,0 +1,42 @@
+[
+  {
+    "id": "nng-scrolljacking",
+    "title": "Scrolljacking 101",
+    "url": "https://www.nngroup.com/articles/scrolljacking-101/"
+  },
+  {
+    "id": "mdn-prm",
+    "title": "prefers-reduced-motion",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+  },
+  {
+    "id": "the-pudding-scrollytelling",
+    "title": "How to Make a Scrollytelling Story",
+    "url": "https://pudding.cool/process/scrollytelling-sticky/"
+  },
+  {
+    "id": "webdev-animations",
+    "title": "How to create high-performance CSS animations",
+    "url": "https://web.dev/articles/animations-guide"
+  },
+  {
+    "id": "wcag-animation",
+    "title": "WCAG 2.1 - Animation from Interactions (2.3.3)",
+    "url": "https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions"
+  },
+  {
+    "id": "britannica-honeybee",
+    "title": "Encyclopaedia Britannica: honeybee",
+    "url": "https://www.britannica.com/animal/honeybee"
+  },
+  {
+    "id": "msu-extension-honey-bee-biology",
+    "title": "Michigan State University Extension: Honey Bee Biology",
+    "url": "https://www.canr.msu.edu/resources/honey_bee_biology"
+  },
+  {
+    "id": "usda-bee-nutrition",
+    "title": "USDA ARS: Honey Bee Nutrition and Colony Health",
+    "url": "https://www.ars.usda.gov/oc/br/bee-health/"
+  }
+]
