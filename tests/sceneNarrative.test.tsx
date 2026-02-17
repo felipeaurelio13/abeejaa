@@ -4,11 +4,20 @@ import { describe, expect, test, vi } from 'vitest';
 import Scene from '../components/Scene';
 import type { StoryScene } from '../components/types';
 
+const timelineMock = {
+  fromTo: vi.fn().mockReturnThis(),
+  to: vi.fn().mockReturnThis()
+};
+
 vi.mock('gsap', () => ({
   default: {
     registerPlugin: vi.fn(),
-    context: vi.fn(() => ({ revert: vi.fn() })),
-    fromTo: vi.fn()
+    context: vi.fn((cb: () => void) => {
+      cb();
+      return { revert: vi.fn() };
+    }),
+    timeline: vi.fn(() => timelineMock),
+    set: vi.fn()
   }
 }));
 
@@ -35,6 +44,7 @@ describe('Scene narrative', () => {
 
     expect(screen.getByText('Escena de prueba')).toBeInTheDocument();
     expect(screen.getByText(/Qué explica esta animación/)).toBeInTheDocument();
+    expect(screen.getByText(/Lectura guiada: contexto → proceso → resultado/)).toBeInTheDocument();
     expect(screen.getByText(/Primer párrafo/)).toBeInTheDocument();
     expect(screen.getByText(/Segundo párrafo/)).toBeInTheDocument();
   });
