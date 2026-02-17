@@ -2,6 +2,8 @@ export type StoryScene = {
   id: string;
   title: string;
   caption: string;
+  narrative: string[];
+  animationSupport: string;
   callouts: string[];
   sources: string[];
 };

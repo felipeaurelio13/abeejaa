@@ -48,7 +48,7 @@ export default function ScrollyStory() {
       <header className="mx-auto flex max-w-6xl items-start justify-between gap-3 px-4 pb-6 pt-10 md:px-10 md:pl-72">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-amber-300">Documental scrollytelling</p>
-          <h1 className="text-2xl font-semibold md:text-4xl">Abejas: biología social en movimiento</h1>
+          <h1 className="text-2xl font-semibold md:text-4xl">Abejas: historia completa de una colonia viva</h1>
         </div>
         <button onClick={toggleReducedMotion} className="rounded-full border border-white/30 px-3 py-2 text-xs md:text-sm">
           {reducedMotion ? 'Activar movimiento' : 'Reducir movimiento'} {usingSystemPreference ? '(sistema)' : '(manual)'}
@@ -85,7 +85,7 @@ export default function ScrollyStory() {
           </ul>
         </section>
 
-        <p className="text-xs text-white/60">abeejaa v1.2.0 · Diseñado mobile-first, sin scrolljacking.</p>
+        <p className="text-xs text-white/60">abeejaa v1.3.0 · Narrativa completa + animaciones explicativas, mobile-first y sin scrolljacking.</p>
       </footer>
     </main>
   );

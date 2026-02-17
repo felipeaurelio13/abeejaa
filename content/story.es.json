@@ -2,71 +2,121 @@
   "scenes": [
     {
       "id": "scene-01",
-      "title": "De solitaria a social",
-      "caption": "Las conexiones crecieron hasta volver a la colonia una ventaja evolutiva.",
+      "title": "De nido solitario a colonia estable",
+      "caption": "La cooperación no apareció de golpe: surgió cuando compartir tareas aumentó la supervivencia del linaje.",
+      "narrative": [
+        "En los ancestros de las abejas sociales, cada hembra construía y defendía su propio nido. Ese modelo funciona en ambientes predecibles, pero se vuelve frágil cuando hay depredadores, cambios de clima o escasez de alimento.",
+        "La transición a vida social ocurrió cuando varias hembras emparentadas comenzaron a compartir espacio y cuidado de crías. La animación muestra cómo un nodo aislado se conecta con otros y construye una red: ese cambio representa una ventaja evolutiva acumulada, no una moda de comportamiento."
+      ],
+      "animationSupport": "Los nodos pasan de aislamiento a red para explicar por qué la cooperación genera resiliencia.",
       "callouts": ["Nido individual", "Cooperación", "Cuidado colectivo"],
       "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
     },
     {
       "id": "scene-02",
       "title": "La colonia como superorganismo",
-      "caption": "Néctar, polen y agua sostienen cría, reservas y trabajo coordinado.",
+      "caption": "Cada recurso que entra se transforma en función colectiva: cría, energía, defensa y continuidad.",
+      "narrative": [
+        "Una colmena no es solo un conjunto de individuos: se comporta como un sistema integrado. El néctar aporta carbohidratos, el polen provee proteínas y lípidos, y el agua regula procesos térmicos y metabólicos.",
+        "En la animación, las entradas de alimento avanzan hacia compartimentos internos con prioridades distintas. Así se visualiza que la colonia decide constantemente dónde invertir recursos según la edad de la cría, la estación y el tamaño poblacional."
+      ],
+      "animationSupport": "Flujos dirigidos conectan entradas con reservas y cría para mostrar gestión energética de la colmena.",
       "callouts": ["Entradas", "Cría", "Reservas", "Población"],
       "sources": ["usda-bee-nutrition", "britannica-honeybee"]
     },
     {
       "id": "scene-03",
-      "title": "Castas",
-      "caption": "Reina, obreras y zánganos: cuerpos distintos para tareas distintas.",
+      "title": "Castas: misma especie, funciones distintas",
+      "caption": "Reina, obreras y zánganos expresan diseños corporales especializados para sostener la colonia.",
+      "narrative": [
+        "Las castas no son categorías abstractas: son estrategias biológicas concretas. La reina concentra reproducción, las obreras ejecutan mantenimiento y forrajeo, y los zánganos aportan función reproductiva estacional.",
+        "La animación compara siluetas y proporciones para que se entienda la diferencia funcional sin depender de memorizar términos. Cada bloque visual enfatiza que la diversidad interna mejora eficiencia y continuidad genética."
+      ],
+      "animationSupport": "Tres siluetas comparativas hacen visible la especialización anatómica de cada casta.",
       "callouts": ["Reina", "Obrera", "Zángano"],
       "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
     },
     {
       "id": "scene-04",
-      "title": "Genética: haplodiploidía",
-      "caption": "Un huevo fecundado y otro no fecundado siguen rutas biológicas diferentes.",
+      "title": "Genética haplodiploide",
+      "caption": "El destino sexual depende de fecundación: ruta diploide para hembras y haploide para machos.",
+      "narrative": [
+        "En abejas, un huevo fecundado desarrolla hembra (diploide), mientras que uno no fecundado desarrolla macho (haploide). Este sistema altera parentescos y condiciona dinámicas de cooperación dentro de la colonia.",
+        "La animación divide una línea de origen en dos ramas con etiquetas genéticas para facilitar lectura causal. No es un efecto decorativo: representa la bifurcación biológica que estructura castas y reproducción."
+      ],
+      "animationSupport": "Una bifurcación central conecta el mismo origen con dos rutas genéticas diferenciadas.",
       "callouts": ["Fecundado", "No fecundado", "Diploide", "Haploide"],
       "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
     },
     {
       "id": "scene-05",
-      "title": "Ciclo de vida",
-      "caption": "Cada etapa transforma el cuerpo y la función dentro de la colmena.",
+      "title": "Ciclo de vida completo",
+      "caption": "Del huevo al adulto, cada fase modifica estructura corporal y rol potencial dentro del nido.",
+      "narrative": [
+        "El desarrollo pasa por huevo, larva, pupa y adulto. Cada transición implica cambios fisiológicos profundos, desde alimentación intensiva de larvas hasta reorganización de tejidos durante la pupación.",
+        "La animación ordena etapas en secuencia temporal con escalamiento progresivo para evitar ambigüedades. El objetivo es que el usuario pueda reconstruir el proceso sin necesidad de regresar a una definición externa."
+      ],
+      "animationSupport": "Una línea temporal con hitos crecientes muestra el desarrollo como proceso continuo y acumulativo.",
       "callouts": ["Huevo", "Larva", "Pupa", "Adulto"],
       "sources": ["britannica-honeybee"]
     },
     {
       "id": "scene-06",
-      "title": "División del trabajo",
-      "caption": "La obrera cambia de rol con la edad y la necesidad de la colonia.",
+      "title": "División del trabajo por edad",
+      "caption": "La obrera rota tareas según su edad y la necesidad urgente de la colonia.",
+      "narrative": [
+        "Durante sus primeras semanas, la obrera suele comenzar limpiando celdas, luego alimenta larvas, produce cera, vigila entradas y finalmente sale a forrajear. No es una jerarquía rígida: es una asignación dinámica.",
+        "La animación usa una escalera de roles para visualizar progresión y posibles ajustes. Cuando la colonia necesita más recolectoras o más nodrizas, ese orden puede acortarse o reorganizarse."
+      ],
+      "animationSupport": "El recorrido ascendente convierte el cambio de roles en una secuencia fácil de seguir.",
       "callouts": ["Limpieza", "Nodriza", "Cera", "Guardia", "Forrajeo"],
       "sources": ["msu-extension-honey-bee-biology", "britannica-honeybee"]
     },
     {
       "id": "scene-07",
-      "title": "Comunicación",
-      "caption": "Feromonas y baile transmiten dirección, distancia y estado de la colonia.",
+      "title": "Comunicación: feromonas y baile",
+      "caption": "La colonia comparte estado interno y oportunidades externas mediante señales químicas y cinéticas.",
+      "narrative": [
+        "Las feromonas regulan cohesión social, alarma y organización del trabajo. El waggle dance agrega información espacial: dirección respecto al sol y distancia aproximada hacia una fuente de alimento.",
+        "La animación superpone un centro emisor y un vector de salida para representar ambos canales de comunicación. De este modo, se entiende que las abejas no improvisan: transmiten datos accionables."
+      ],
+      "animationSupport": "El vector angular del baile se combina con ondas de feromonas para explicar comunicación multimodal.",
       "callouts": ["Feromonas", "Waggle dance", "Vector"],
       "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
     },
     {
       "id": "scene-08",
-      "title": "Termorregulación",
-      "caption": "Ventilan, evaporan agua o se agrupan para sostener condiciones internas.",
+      "title": "Termorregulación colectiva",
+      "caption": "Mantener temperatura estable es crítico para la cría y exige coordinación continua.",
+      "narrative": [
+        "Cuando sube la temperatura, las obreras ventilan y evaporan agua; cuando baja, forman racimos y generan calor metabólico. La homeostasis térmica protege el desarrollo de larvas y pupas.",
+        "La animación contrapone flujos fríos y cálidos alrededor del núcleo de cría para mostrar decisiones opuestas según contexto. El mensaje clave: regular clima interno es una tarea activa y constante."
+      ],
+      "animationSupport": "Dos flujos opuestos (enfriar/calentar) explican cómo la colonia sostiene un rango térmico útil.",
       "callouts": ["Enfriar", "Calentar", "Objetivo térmico"],
       "sources": ["usda-bee-nutrition", "msu-extension-honey-bee-biology"]
     },
     {
       "id": "scene-09",
-      "title": "Reina: reemplazo y crisis",
-      "caption": "Si falla la reina, la colonia abre una ventana breve para recuperarse.",
+      "title": "Reina: reemplazo y ventana de riesgo",
+      "caption": "Si la reina falla, la colonia activa un plan de recambio limitado por tiempo biológico.",
+      "narrative": [
+        "Ante una reina ausente o débil, las obreras seleccionan larvas jóvenes y construyen celdas reales para criar una sucesora. El éxito depende de disponibilidad de cría adecuada y de condiciones de fecundación.",
+        "La animación marca una línea temporal con eventos críticos y una rama de riesgo si se pierde la ventana útil. Sirve para entender que el recambio no siempre garantiza continuidad."
+      ],
+      "animationSupport": "La línea de tiempo con bifurcación final visualiza la urgencia del reemplazo de reina.",
       "callouts": ["Celdas reales", "Reina virgen", "Vuelo", "Riesgo sin larvas"],
       "sources": ["britannica-honeybee", "msu-extension-honey-bee-biology"]
     },
     {
       "id": "scene-10",
       "title": "Ingeniería de reservas",
-      "caption": "Miel, bee bread y propóleo convierten recursos en estabilidad.",
+      "caption": "Miel, bee bread y propóleo convierten recursos variables en estabilidad de largo plazo.",
+      "narrative": [
+        "La miel almacena energía rápida, el bee bread conserva nutrientes del polen fermentado y el propóleo refuerza higiene y sellado estructural. Juntas, estas reservas reducen vulnerabilidad estacional.",
+        "La animación organiza tres depósitos y su contribución al balance final de la colonia. Así se ve que reservar no es acumular por acumular, sino diseñar resiliencia frente a interrupciones del entorno."
+      ],
+      "animationSupport": "Tres tanques conectados muestran cómo cada reserva aporta a la estabilidad global.",
       "callouts": ["Miel", "Bee bread", "Propóleo", "Sellado"],
       "sources": ["usda-bee-nutrition", "britannica-honeybee"]
     }
