@@ -24,26 +24,49 @@ export default function Scene({ scene, index, sceneRef, reducedMotion }: Props) 
     if (!container || !sticky || reducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const items = sticky.querySelectorAll('.anim');
-      gsap.fromTo(
-        items,
-        { opacity: 0.15, y: 18, scale: 0.99 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          ease: 'power1.out',
-          stagger: 0.05,
-          scrollTrigger: {
-            trigger: container,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: true,
-            pin: sticky,
-            pinSpacing: false
-          }
+      const contextItems = sticky.querySelectorAll('.anim-context');
+      const flowItems = sticky.querySelectorAll('.anim-flow');
+      const focusItems = sticky.querySelectorAll('.anim-focus');
+      const outcomeItems = sticky.querySelectorAll('.anim-outcome');
+      const flowPaths = sticky.querySelectorAll<SVGPathElement>('.anim-path');
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
+          pin: sticky,
+          pinSpacing: false
         }
-      );
+      });
+
+      timeline
+        .fromTo(contextItems, { opacity: 0.16, y: 24 }, { opacity: 1, y: 0, ease: 'power1.out', stagger: 0.06, duration: 0.55 })
+        .fromTo(flowItems, { opacity: 0.14, y: 18, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, ease: 'power1.out', stagger: 0.05, duration: 0.55 }, '<+0.1')
+        .to(
+          flowPaths,
+          {
+            strokeDashoffset: 0,
+            opacity: 1,
+            ease: 'none',
+            duration: 0.7,
+            stagger: 0.08
+          },
+          '<'
+        )
+        .fromTo(
+          focusItems,
+          { opacity: 0.4, scale: 0.92 },
+          { opacity: 1, scale: 1, ease: 'power2.out', stagger: 0.04, duration: 0.45 },
+          '<+0.05'
+        )
+        .fromTo(outcomeItems, { opacity: 0.1, y: 14 }, { opacity: 1, y: 0, ease: 'power1.out', stagger: 0.05, duration: 0.6 }, '<+0.12');
+
+      flowPaths.forEach((path) => {
+        const length = path.getTotalLength();
+        gsap.set(path, { strokeDasharray: length, strokeDashoffset: length, opacity: 0.3 });
+      });
     }, sticky);
 
     return () => ctx.revert();
@@ -64,6 +87,9 @@ export default function Scene({ scene, index, sceneRef, reducedMotion }: Props) 
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+            <p className="rounded-xl border border-white/20 bg-white/5 px-3 py-2 text-[11px] uppercase tracking-[0.2em] text-white/70 md:text-xs">
+              Lectura guiada: contexto → proceso → resultado
+            </p>
             <p className="rounded-xl border border-cyan-200/30 bg-cyan-100/10 px-3 py-2 text-xs leading-relaxed text-cyan-50 md:text-sm">
               <strong>Qué explica esta animación:</strong> {scene.animationSupport}
             </p>
