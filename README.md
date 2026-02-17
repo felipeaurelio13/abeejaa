@@ -67,9 +67,11 @@ El repositorio ya queda listo para deploy automático al hacer push a `main`.
 - Con movimiento reducido se eliminan animaciones continuas y se mantiene lectura visual estática.
 
 
-## Actualización visual v1.2.0
+## Actualización narrativa y visual v1.3.0
 
 - Se profesionalizó el lenguaje gráfico con una misma base visual por escena (marco, gradientes y jerarquía), reduciendo ruido decorativo y enfocando cada animación en el concepto didáctico principal.
+- Se reescribió la historia por escena con narrativa completa (contexto + consecuencia) para que cada capítulo sea autosuficiente.
+- Cada escena incorpora un bloque explícito de "Qué explica esta animación" para conectar visual y relato sin elementos ornamentales.
 - Las animaciones ahora son más sutiles, con menor desplazamiento y escalado leve para reforzar lectura, no distraer.
 - Se mantiene compatibilidad con `prefers-reduced-motion` y toggle manual.
 
@@ -81,4 +83,4 @@ El repositorio ya queda listo para deploy automático al hacer push a `main`.
 
 ## Versión
 
-- App + footer: `abeejaa v1.2.0`.
+- App + footer: `abeejaa v1.3.0`.

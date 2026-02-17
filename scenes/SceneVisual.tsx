@@ -28,25 +28,11 @@ function BackgroundFrame() {
   );
 }
 
-function HexPattern({ opacity = 0.25 }: { opacity?: number }) {
+function Label({ x, y, text }: { x: number; y: number; text: string }) {
   return (
-    <g opacity={opacity}>
-      {Array.from({ length: 18 }).map((_, i) => {
-        const row = Math.floor(i / 6);
-        const col = i % 6;
-        const x = 70 + col * 84 + (row % 2) * 42;
-        const y = 72 + row * 70;
-        return (
-          <polygon
-            key={i}
-            points={`${x},${y} ${x + 28},${y + 16} ${x + 28},${y + 48} ${x},${y + 64} ${x - 28},${y + 48} ${x - 28},${y + 16}`}
-            fill="rgba(251, 191, 36, 0.16)"
-            stroke="rgba(253, 224, 71, 0.45)"
-            strokeWidth="1.5"
-          />
-        );
-      })}
-    </g>
+    <text x={x} y={y} fill="rgba(255,255,255,.86)" fontSize="18">
+      {text}
+    </text>
   );
 }
 
@@ -55,146 +41,162 @@ export default function SceneVisual({ index, reducedMotion }: Props) {
 
   if (index === 0) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Transición de nido solitario a colonia conectada">
         <BackgroundFrame />
-        <circle cx="125" cy="210" r="46" fill="#fbbf24" className="anim" />
-        <g className="anim">
-          <circle cx="305" cy="130" r="20" fill="#f59e0b" className={pulse} />
-          <circle cx="370" cy="220" r="22" fill="#f59e0b" />
-          <circle cx="468" cy="170" r="24" fill="#f59e0b" />
-        </g>
-        <path d="M170 204 C 228 172, 258 147, 286 133 M170 204 C 244 214, 306 221, 350 220 M170 204 C 286 198, 380 184, 442 171" stroke="url(#amberFlow)" strokeWidth="4" fill="none" className="anim" />
-        <text x="74" y="278" fill="rgba(255,255,255,.9)" fontSize="24">nido solitario</text>
-        <text x="388" y="112" fill="rgba(255,255,255,.9)" fontSize="24">colonia</text>
+        <circle cx="120" cy="208" r="44" fill="#fbbf24" className="anim" />
+        <circle cx="300" cy="118" r="18" fill="#f59e0b" className={`anim ${pulse}`} />
+        <circle cx="374" cy="206" r="20" fill="#f59e0b" className="anim" />
+        <circle cx="470" cy="154" r="22" fill="#f59e0b" className="anim" />
+        <path d="M166 208 C 228 170, 262 142, 286 121 M166 208 C 246 214, 304 212, 350 206 M166 208 C 292 198, 380 175, 448 156" stroke="url(#amberFlow)" strokeWidth="4" fill="none" className="anim" />
+        <Label x={62} y={274} text="nido individual" />
+        <Label x={376} y={106} text="red cooperativa" />
       </svg>
     );
   }
 
   if (index === 1) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Flujo de recursos dentro de la colonia">
         <BackgroundFrame />
-        <HexPattern />
-        <g className="anim">
-          <rect x="420" y="86" width="110" height="220" rx="14" fill="rgba(52, 211, 153, 0.2)" stroke="rgba(110, 231, 183, .6)" />
-          <rect x="420" y="198" width="110" height="108" rx="8" fill="rgba(52, 211, 153, 0.55)" />
-        </g>
-        <g className="anim">
-          <circle cx="88" cy="112" r="14" fill="#7dd3fc" />
-          <circle cx="88" cy="190" r="14" fill="#fb923c" />
-          <circle cx="88" cy="268" r="14" fill="#5eead4" />
-          <path d="M108 112 H220 M108 190 H235 M108 268 H250" stroke="rgba(255,255,255,.75)" strokeWidth="3" />
-        </g>
+        <circle cx="86" cy="110" r="12" fill="#7dd3fc" className="anim" />
+        <circle cx="86" cy="190" r="12" fill="#fb923c" className="anim" />
+        <circle cx="86" cy="270" r="12" fill="#5eead4" className="anim" />
+        <path d="M108 110 H258 M108 190 H258 M108 270 H258" stroke="rgba(255,255,255,.72)" strokeWidth="3" />
+        <rect x="260" y="88" width="106" height="218" rx="10" fill="rgba(251,191,36,.18)" stroke="rgba(251,191,36,.52)" className="anim" />
+        <rect x="394" y="102" width="128" height="90" rx="10" fill="rgba(56,189,248,.25)" className="anim" />
+        <rect x="394" y="214" width="128" height="90" rx="10" fill="rgba(52,211,153,.3)" className="anim" />
+        <Label x={34} y={96} text="entradas" />
+        <Label x={404} y={156} text="cría" />
+        <Label x={404} y={266} text="reservas" />
       </svg>
     );
   }
 
   if (index === 2) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Comparación de castas de abejas">
         <BackgroundFrame />
-        <ellipse cx="130" cy="210" rx="56" ry="95" fill="#fde047" className="anim" />
-        <ellipse cx="300" cy="212" rx="50" ry="76" fill="#fcd34d" className="anim" />
-        <ellipse cx="470" cy="210" rx="72" ry="62" fill="#fef08a" className="anim" />
-        <circle cx="468" cy="172" r="24" fill="rgba(15,23,42,.6)" />
-        <line x1="292" y1="282" x2="332" y2="324" stroke="#f87171" strokeWidth="5" className="anim" />
+        <ellipse cx="120" cy="212" rx="60" ry="98" fill="#fde047" className="anim" />
+        <ellipse cx="300" cy="212" rx="48" ry="76" fill="#fcd34d" className="anim" />
+        <ellipse cx="474" cy="212" rx="70" ry="60" fill="#fef08a" className="anim" />
+        <Label x={86} y={338} text="reina" />
+        <Label x={266} y={338} text="obrera" />
+        <Label x={442} y={338} text="zángano" />
       </svg>
     );
   }
 
   if (index === 3) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Bifurcación genética haplodiploide">
         <BackgroundFrame />
-        <circle cx="300" cy="88" r="30" fill="rgba(254,243,199,.95)" className="anim" />
-        <path d="M300 118 V330" stroke="rgba(255,255,255,.7)" strokeWidth="2" />
-        <path d="M300 160 C220 200,220 268,220 322" stroke="#f0abfc" strokeWidth="6" fill="none" className="anim" />
-        <path d="M300 160 C380 200,380 268,380 322" stroke="#7dd3fc" strokeWidth="6" fill="none" className="anim" />
-        <text x="152" y="352" fill="rgba(250,232,255,.95)" fontSize="22">huevo fecundado</text>
-        <text x="342" y="352" fill="rgba(224,242,254,.95)" fontSize="22">no fecundado</text>
+        <circle cx="300" cy="96" r="28" fill="rgba(254,243,199,.95)" className="anim" />
+        <path d="M300 126 V162" stroke="rgba(255,255,255,.7)" strokeWidth="3" />
+        <path d="M300 162 C220 194,220 266,210 324" stroke="#f0abfc" strokeWidth="7" fill="none" className="anim" />
+        <path d="M300 162 C380 194,380 266,390 324" stroke="#7dd3fc" strokeWidth="7" fill="none" className="anim" />
+        <Label x={120} y={352} text="fecundado → hembra diploide" />
+        <Label x={318} y={352} text="no fecundado → macho haploide" />
       </svg>
     );
   }
 
   if (index === 4) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Etapas del ciclo de vida de la abeja">
         <BackgroundFrame />
-        <g className="anim">
-          <circle cx="116" cy="204" r="46" fill="rgba(255,255,255,.45)" />
-          <circle cx="248" cy="204" r="56" fill="rgba(217,249,157,.48)" />
-          <circle cx="388" cy="204" r="66" fill="rgba(221,214,254,.48)" />
-          <circle cx="528" cy="204" r="76" fill="rgba(252,211,77,.58)" />
-        </g>
-        <path d="M164 204 H192 M304 204 H322 M454 204 H470" stroke="rgba(255,255,255,.8)" strokeWidth="4" />
+        <circle cx="100" cy="204" r="36" fill="rgba(255,255,255,.45)" className="anim" />
+        <circle cx="230" cy="204" r="48" fill="rgba(217,249,157,.48)" className="anim" />
+        <circle cx="372" cy="204" r="60" fill="rgba(221,214,254,.48)" className="anim" />
+        <circle cx="516" cy="204" r="74" fill="rgba(252,211,77,.58)" className="anim" />
+        <path d="M136 204 H182 M278 204 H312 M432 204 H442" stroke="rgba(255,255,255,.8)" strokeWidth="3" />
+        <Label x={72} y={286} text="huevo" />
+        <Label x={196} y={286} text="larva" />
+        <Label x={336} y={286} text="pupa" />
+        <Label x={482} y={286} text="adulto" />
       </svg>
     );
   }
 
   if (index === 5) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Escalera de tareas de una obrera">
         <BackgroundFrame />
-        <path d="M70 306 H530" stroke="rgba(255,255,255,.48)" strokeWidth="4" />
-        <circle cx="92" cy="306" r="18" fill="#f59e0b" className="anim" />
-        <rect x="144" y="256" width="72" height="50" rx="6" fill="rgba(56, 189, 248, .58)" className="anim" />
-        <rect x="246" y="236" width="72" height="70" rx="6" fill="rgba(253, 230, 138, .62)" className="anim" />
-        <rect x="348" y="216" width="72" height="90" rx="6" fill="rgba(252, 165, 165, .64)" className="anim" />
-        <rect x="450" y="196" width="72" height="110" rx="6" fill="rgba(110, 231, 183, .6)" className="anim" />
+        <path d="M70 308 H530" stroke="rgba(255,255,255,.45)" strokeWidth="4" />
+        <rect x="94" y="262" width="72" height="46" rx="7" fill="rgba(56,189,248,.55)" className="anim" />
+        <rect x="188" y="240" width="72" height="68" rx="7" fill="rgba(253,230,138,.6)" className="anim" />
+        <rect x="282" y="220" width="72" height="88" rx="7" fill="rgba(252,165,165,.62)" className="anim" />
+        <rect x="376" y="198" width="72" height="110" rx="7" fill="rgba(110,231,183,.6)" className="anim" />
+        <rect x="470" y="176" width="72" height="132" rx="7" fill="rgba(167,139,250,.62)" className="anim" />
+        <Label x={86} y={336} text="limpieza" />
+        <Label x={188} y={336} text="nodriza" />
+        <Label x={300} y={336} text="cera" />
+        <Label x={392} y={336} text="guardia" />
+        <Label x={474} y={336} text="forrajeo" />
       </svg>
     );
   }
 
   if (index === 6) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Comunicación por feromonas y danza">
         <BackgroundFrame />
-        <circle cx="300" cy="200" r="102" fill="rgba(244,114,182,.17)" stroke="rgba(251,207,232,.8)" />
-        <path d="M192 220 C250 172, 340 162, 410 112" stroke="url(#amberFlow)" strokeWidth="7" fill="none" className="anim" />
-        <path d="M300 200 L420 150" stroke="rgba(125, 211, 252, .9)" strokeWidth="2" className="anim" />
-        <circle cx="420" cy="150" r="11" fill="rgba(186,230,253,.95)" className={pulse} />
+        <circle cx="298" cy="204" r="106" fill="rgba(244,114,182,.16)" stroke="rgba(251,207,232,.8)" />
+        <circle cx="298" cy="204" r="14" fill="rgba(244,114,182,.9)" className={`anim ${pulse}`} />
+        <path d="M190 222 C250 176, 336 162, 410 112" stroke="url(#amberFlow)" strokeWidth="8" fill="none" className="anim" />
+        <path d="M298 204 L424 150" stroke="rgba(125, 211, 252, .95)" strokeWidth="3" className="anim" />
+        <circle cx="424" cy="150" r="11" fill="rgba(186,230,253,.95)" className="anim" />
+        <Label x={202} y={116} text="ruta del baile" />
+        <Label x={244} y={252} text="señal química" />
       </svg>
     );
   }
 
   if (index === 7) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Control de temperatura dentro de la colmena">
         <BackgroundFrame />
-        <rect x="248" y="88" width="104" height="224" rx="20" fill="rgba(255,255,255,.17)" />
-        <rect x="260" y="126" width="80" height="174" rx="12" fill="url(#amberFlow)" className="anim" />
-        <circle cx="152" cy="130" r="36" fill="rgba(125, 211, 252, .38)" className="anim" />
-        <circle cx="448" cy="280" r="46" fill="rgba(251, 146, 60, .36)" className="anim" />
+        <rect x="248" y="88" width="104" height="224" rx="20" fill="rgba(255,255,255,.16)" />
+        <rect x="262" y="126" width="76" height="172" rx="12" fill="url(#amberFlow)" className="anim" />
+        <path d="M90 140 H220" stroke="rgba(125,211,252,.9)" strokeWidth="6" className="anim" />
+        <path d="M510 268 H380" stroke="rgba(251,146,60,.92)" strokeWidth="6" className="anim" />
+        <Label x={74} y={122} text="enfriar" />
+        <Label x={442} y={252} text="calentar" />
+        <Label x={228} y={344} text="núcleo de cría estable" />
       </svg>
     );
   }
 
   if (index === 8) {
     return (
-      <svg viewBox="0 0 600 400" className="h-full w-full">
+      <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Línea temporal del reemplazo de reina">
         <BackgroundFrame />
-        <path d="M70 90 H530" stroke="rgba(255,255,255,.3)" strokeWidth="2" />
-        <g className="anim">
-          <circle cx="90" cy="90" r="16" fill="#fca5a5" />
-          <circle cx="180" cy="90" r="16" fill="#f0abfc" />
-          <circle cx="280" cy="90" r="16" fill="#c4b5fd" />
-          <circle cx="390" cy="90" r="16" fill="#86efac" />
-          <circle cx="500" cy="90" r="16" fill="#fcd34d" />
-        </g>
-        <path d="M90 90 V250 H500" stroke="rgba(255,255,255,.52)" strokeWidth="3" fill="none" />
-        <path d="M280 250 V320 H520" stroke="#fda4af" strokeWidth="5" fill="none" className="anim" />
+        <path d="M74 98 H530" stroke="rgba(255,255,255,.34)" strokeWidth="3" />
+        <circle cx="92" cy="98" r="14" fill="#fca5a5" className="anim" />
+        <circle cx="190" cy="98" r="14" fill="#f0abfc" className="anim" />
+        <circle cx="308" cy="98" r="14" fill="#c4b5fd" className="anim" />
+        <circle cx="430" cy="98" r="14" fill="#86efac" className="anim" />
+        <path d="M92 98 V250 H430" stroke="rgba(255,255,255,.52)" strokeWidth="3" fill="none" />
+        <path d="M308 250 V320 H530" stroke="#fda4af" strokeWidth="5" fill="none" className="anim" />
+        <Label x={64} y={74} text="fallo" />
+        <Label x={156} y={74} text="celda real" />
+        <Label x={266} y={74} text="reina virgen" />
+        <Label x={382} y={74} text="vuelo" />
+        <Label x={452} y={338} text="riesgo sin larvas" />
       </svg>
     );
   }
 
   return (
-    <svg viewBox="0 0 600 400" className="h-full w-full">
+    <svg viewBox="0 0 600 400" className="h-full w-full" role="img" aria-label="Reservas de la colonia y estabilidad final">
       <BackgroundFrame />
-      <HexPattern opacity={0.36} />
-      <rect x="122" y="142" width="100" height="140" rx="8" fill="rgba(252, 211, 77, .58)" className="anim" />
-      <rect x="252" y="112" width="100" height="170" rx="8" fill="rgba(251, 146, 60, .56)" className="anim" />
-      <rect x="382" y="162" width="100" height="120" rx="8" fill="rgba(110, 231, 183, .5)" className="anim" />
-      <path d="M100 304 H500" stroke="rgba(255,255,255,.48)" strokeWidth="2" />
+      <rect x="104" y="136" width="116" height="154" rx="10" fill="rgba(252, 211, 77, .58)" className="anim" />
+      <rect x="242" y="108" width="116" height="182" rx="10" fill="rgba(251, 146, 60, .56)" className="anim" />
+      <rect x="380" y="154" width="116" height="136" rx="10" fill="rgba(110, 231, 183, .5)" className="anim" />
+      <path d="M104 306 H496" stroke="rgba(255,255,255,.48)" strokeWidth="3" />
+      <Label x={126} y={330} text="miel" />
+      <Label x={252} y={330} text="bee bread" />
+      <Label x={394} y={330} text="propóleo" />
+      <Label x={208} y={84} text="balance de estabilidad" />
     </svg>
   );
 }
